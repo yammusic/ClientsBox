@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<link href="/assets/box-favicon.png" rel="icon" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta charset="UTF-8">
+		<title>Clients Box</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<header>
+			<div class="title">
+				<span>Clients Box</span>
+			</div>
+			<div id="user_nav">
+				<% if user_signed_in? %>
+					Signed in as <%= current_user.email %>. Not you?
+					<%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'btn' %>
+				<% else %>
+					<%- if controller_name != 'sessions' %>
+						<%= link_to "Sign in", new_user_session_path, :class => 'btn' %>
+					<% else %>
+						<%= link_to "Sign up", new_user_registration_path, :class => 'btn' %>
+					<% end %>
+				<% end %>
+			</div>
+		</header>
+
+		<section id="wrapper">
+			<%= yield %>
+		</section>
+
+		<footer>
+			<span class="foot">Powered By Yeison Andres Molina</span>
+			<%= image_tag '/assets/rails.png', :class => 'foot-rails' %>
+		</footer>
+	</body>
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</html>

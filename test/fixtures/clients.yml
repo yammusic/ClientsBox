@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type_id: MyString
+  num_id: 1
+  name: MyString
+  born: 2013-09-29
+  sex: 1
+  country: MyString
+  state: MyString
+  city: MyString
+
+two:
+  type_id: MyString
+  num_id: 1
+  name: MyString
+  born: 2013-09-29
+  sex: 1
+  country: MyString
+  state: MyString
+  city: MyString

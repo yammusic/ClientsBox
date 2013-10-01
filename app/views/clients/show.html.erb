@@ -1,0 +1,21 @@
+<% sex = { 1 => 'Male', 2 => 'Female' } %>
+<% sex_image = { 1 => '/assets/male.png', 2 => '/assets/female.png' } %>
+
+<article id="show_user">
+	<div class="avatar">
+		<%= image_tag(@client.avatar_url(:thumb_max)) if @client.avatar? %>
+	</div>
+	<div class="info">
+		<p><%= @client.type_id %>: <%= @client.num_id %></p>
+		<p><%= @client.name %></p>
+		<p><%= @client.born %></p>
+		<p><%= image_tag(sex_image[@client.sex]) %> <%= sex[@client.sex] %></p>
+		<p><%= @client.country %> - <%= @client.state %> - <%= @client.city %></p>
+	</div>
+</article>
+
+<div>
+  <%= link_to 'Edit', edit_client_path(@client), :class => 'btn btn-warning' %>
+  |
+  <%= link_to 'Back', clients_path, :class => 'btn btn-inverse' %>
+</div>

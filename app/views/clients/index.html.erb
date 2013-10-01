@@ -1,0 +1,40 @@
+<% sex = { 1 => 'Male', 2 => 'Female' } %>
+<h1>Listing Clients</h1>
+
+<table class="table table-hover table-condensed">
+  <tr>
+    <th>Avatar</th>
+    <th>Identity Document</th>
+    <th>Number Document</th>
+    <th>Name</th>
+    <th>Date of Birth</th>
+    <th>Sex</th>
+    <th>Country</th>
+    <th>State</th>
+    <th>City</th>
+    <th></th>
+  </tr>
+
+<% @clients.each do |client| %>
+  <tr>
+    <td><%= image_tag(client.avatar_url(:thumb_min)) if client.avatar? %></td>
+    <td><%= client.type_id %></td>
+    <td><%= client.num_id %></td>
+    <td><%= client.name %></td>
+    <td><%= client.born %></td>
+    <td><%= sex[client.sex] %></td>
+    <td><%= client.country %></td>
+    <td><%= client.state %></td>
+    <td><%= client.city %></td>
+    <td>
+        <%= link_to 'Show', client, class: 'btn btn-info' %>
+        <%= link_to 'Edit', edit_client_path(client), class: 'btn btn-warning' %>
+        <%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Client', new_client_path, class: 'btn' %>
